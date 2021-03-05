@@ -82,35 +82,11 @@ optimizer = 'adam' #an optimizer that comes with Keras, works good with most pro
 
 model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 print(model.summary())
-#model.load_weights("mnist-model.h5")
 
 model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epochs, batch_size=64)
 #saves model
 model.save("mnist-model.h5")
 
-#load image in the folder
-#img = image.load_img(path="catimg.jpg",grayscale=True,target_size=(32,32,1))
-#img = image.img_to_array(img)
-#test_img = img.reshape((32, 32, 1))
-
 #Model evaluation
 scores = model.evaluate(X_test, y_test, verbose=0)
 print("Accuracy: %.2f%%" % (scores[1]*100))
-
-#use model for random image in test set
-#img = test_x[130] #this is for random image from test set
-#test_img = img.reshape((1,784)) #this is for random image from test set
-
-#img_class = model.predict_classes(test_img)
-#prediction = img_class[0]
-
-#classname = img_class[0]
-
-#print("Class: ",classname)
-#img = img.reshape((32,32))
-#plt.imshow(img)
-#plt.title(classname)
-#plt.show()
-
-#use model for new image, have to save the model first and create a fcn that passes new image through model
-#model.predict(new_image)
