@@ -100,15 +100,12 @@ test_img = test_img / 255.0 #after normalizing goes from horse to cat
 #scores = model.evaluate(X_test, y_test, verbose=0)
 #print("Accuracy: %.2f%%" % (scores[1]*100))
 
-#use model for random image in test set
-#img = test_x[130] #this is for random image from test set
-#test_img = img.reshape((1,784)) #this is for random image from test set
-
-img_class = numpy.argmax(model.predict(test_img), axis=-1) #this code made allowed the img to go through model. this was an updated code to just predict_classes
+img_class = numpy.argmax(model.predict(test_img), axis=-1)
 prediction = img_class[0]
 
 classname = img_class[0]
 
+#plot data
 print("Class: ",classname)
 img = img.reshape((32,32,3))
 #plt.imshow(img)
@@ -116,6 +113,3 @@ img = img.reshape((32,32,3))
 plt.imshow((img * 255).astype(numpy.uint8), interpolation='nearest')
 plt.title(classname)
 plt.show()
-
-#use model for new image, have to save the model first and create a fcn that passes new image through model
-#model.predict(new_image)
